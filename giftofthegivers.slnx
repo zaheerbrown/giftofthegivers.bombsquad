@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="giftofthegivers.csproj" />
+  <Project Path="GiftOfTheGivers.Functions/GiftOfTheGivers.Functions.csproj" />
+</Solution>

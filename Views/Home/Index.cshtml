@@ -1,0 +1,50 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero-section">
+    <div class="container hero-content">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <span class="eyebrow">Rapid disaster response • Humanitarian relief</span>
+                <h1>When disaster strikes,<br /><span>hope moves fast.</span></h1>
+                <p class="hero-lead">Support emergency relief efforts, follow active projects and join a volunteer network built to help communities when they need it most.</p>
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a class="btn btn-donate btn-lg px-4" asp-controller="Donation" asp-action="Create">Make a Donation</a>
+                    <a class="btn btn-outline-light btn-lg px-4" asp-controller="Project" asp-action="Index">View Relief Projects</a>
+                </div>
+                <div class="hero-note mt-4">Your donation flow is connected to an Azure Function that generates a tax-certificate reference after a successful donation.</div>
+            </div>
+            <div class="col-lg-5">
+                <div class="impact-panel">
+                    <span class="panel-label">HOW YOU CAN HELP</span>
+                    <a asp-controller="Donation" asp-action="Create" class="impact-item"><span class="impact-number">01</span><div><strong>Donate</strong><small>Fund emergency relief and community support.</small></div><span>→</span></a>
+                    <a asp-controller="Volunteer" asp-action="Index" class="impact-item"><span class="impact-number">02</span><div><strong>Volunteer</strong><small>Register your skills and availability.</small></div><span>→</span></a>
+                    <a asp-controller="Project" asp-action="Index" class="impact-item"><span class="impact-number">03</span><div><strong>Track relief</strong><small>See active disaster-response initiatives.</small></div><span>→</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-block">
+    <div class="container">
+        <div class="section-heading text-center mx-auto">
+            <span class="eyebrow dark">OUR RESPONSE</span>
+            <h2>One platform. Three ways to make an impact.</h2>
+            <p>The prototype brings donations, disaster-relief projects and volunteer registration into one integrated web application.</p>
+        </div>
+        <div class="row g-4 mt-2">
+            <div class="col-md-4"><div class="feature-card"><div class="feature-icon">R</div><h3>Emergency Donations</h3><p>Submit a secure donation record and receive a generated tax-certificate reference through the Azure Function integration.</p><a asp-controller="Donation" asp-action="Create">Donate now →</a></div></div>
+            <div class="col-md-4"><div class="feature-card"><div class="feature-icon">+</div><h3>Relief Projects</h3><p>Explore active response initiatives, their locations, categories, targets and funds raised.</p><a asp-controller="Project" asp-action="Index">Explore projects →</a></div></div>
+            <div class="col-md-4"><div class="feature-card"><div class="feature-icon">V</div><h3>Volunteer Network</h3><p>Register your contact details, expertise and availability to support future relief operations.</p><a asp-controller="Volunteer" asp-action="Index">Join the network →</a></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-strip">
+    <div class="container d-lg-flex align-items-center justify-content-between gap-4">
+        <div><span class="eyebrow">READY TO HELP?</span><h2 class="mb-1">Turn compassion into action.</h2><p class="mb-0">Every contribution can support a faster humanitarian response.</p></div>
+        <a class="btn btn-light btn-lg mt-3 mt-lg-0 px-4" asp-controller="Donation" asp-action="Create">Donate & Generate Certificate</a>
+    </div>
+</section>

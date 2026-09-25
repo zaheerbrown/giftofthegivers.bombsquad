@@ -1,0 +1,45 @@
+﻿@model IEnumerable<GiftOfTheGivers.Models.Volunteer>
+@{
+    ViewData["Title"] = "Manage Volunteers";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-people-fill text-success me-2"></i>Volunteer Registrations</h2>
+    <span class="badge bg-secondary fs-6">Total Applications: @Model.Count()</span>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th>Date Applied</th>
+                    <th>Full Name</th>
+                    <th>Contact Info</th>
+                    <th>Skills</th>
+                    <th>Availability</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.DateApplied.ToString("yyyy-MM-dd")</td>
+                        <td class="fw-bold">@item.FullName</td>
+                        <td>@item.Email<br /><small class="text-muted">@item.PhoneNumber</small></td>
+                        <td><span class="badge bg-info text-dark">@item.Skills</span></td>
+                        <td>@item.Availability</td>
+                        <td><span class="badge bg-warning text-dark">@item.Status</span></td>
+                    </tr>
+                }
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="6" class="text-center py-4 text-muted">No volunteer applications submitted yet.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+@model GiftOfTheGivers.Models.Donation
+@{
+    ViewData["Title"] = "Make a Donation";
+}
+
+<div class="container my-4">
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <h2 class="fw-bold">Make a Donation</h2>
+            <p class="text-muted">After the donation is saved, the web app calls the HTTP-triggered Azure Function to generate a dummy tax certificate.</p>
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="DonorName" class="form-label"></label>
+                        <input asp-for="DonorName" class="form-control" />
+                        <span asp-validation-for="DonorName" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="DonorEmail" class="form-label"></label>
+                        <input asp-for="DonorEmail" class="form-control" />
+                        <span asp-validation-for="DonorEmail" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="Amount" class="form-label"></label>
+                        <input asp-for="Amount" class="form-control" />
+                        <span asp-validation-for="Amount" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="Currency" class="form-label"></label>
+                        <select asp-for="Currency" class="form-select"><option>ZAR</option><option>USD</option><option>EUR</option></select>
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="DonationType" class="form-label"></label>
+                        <select asp-for="DonationType" class="form-select"><option>One-Time</option><option>Recurring</option></select>
+                    </div>
+                    <div class="col-md-8">
+                        <label asp-for="TaxReferenceNumber" class="form-label"></label>
+                        <input asp-for="TaxReferenceNumber" class="form-control" />
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <div class="form-check mb-2"><input asp-for="IsAnonymous" class="form-check-input" /><label asp-for="IsAnonymous" class="form-check-label">Anonymous donation</label></div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success mt-4">Complete Donation & Generate Certificate</button>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

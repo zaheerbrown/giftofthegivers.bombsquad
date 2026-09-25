@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Gift of the Givers</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GiftOfTheGivers.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand brand-mark" asp-controller="Home" asp-action="Index">
+                    <span class="brand-icon">G</span>
+                    <span><strong>Gift of the Givers</strong><small>Disaster Response • Hope in Action</small></span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Project" asp-action="Index">Relief Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Volunteer" asp-action="Index">Volunteer</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Donation" asp-action="Index">Donations</a></li>
+                        <li class="nav-item ms-lg-2"><a class="btn btn-donate" asp-controller="Donation" asp-action="Create">Donate Now</a></li>
+                    </ul>
+                    <div class="login-wrap ms-lg-3"><partial name="_LoginPartial" /></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+        <div class="container py-4 d-flex flex-column flex-md-row justify-content-between gap-2">
+            <div><strong>Gift of the Givers</strong><br /><span>Disaster relief prototype • 2026</span></div>
+            <div class="text-md-end"><a asp-controller="Project" asp-action="Index">Relief Projects</a> · <a asp-controller="Volunteer" asp-action="Index">Volunteer</a> · <a asp-controller="Home" asp-action="Privacy">Privacy</a></div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

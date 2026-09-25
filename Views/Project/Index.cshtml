@@ -1,0 +1,40 @@
+﻿@model IEnumerable<GiftOfTheGivers.Models.ReliefProject>
+
+@{
+    ViewData["Title"] = "Relief Projects";
+}
+
+<div class="text-center my-4">
+    <h1 class="fw-bold">Active Relief Projects</h1>
+    <p class="text-muted">Explore ongoing disaster relief efforts and community initiatives.</p>
+</div>
+
+<div class="row g-4">
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var item in Model)
+        {
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">@item.Title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">📍 @item.Location</h6>
+                        <p class="card-text flex-grow-1">@item.Description</p>
+                        <div class="mt-3">
+                            <div class="d-flex justify-content-between text-sm mb-1">
+                                <span>Target: @item.TargetAmount.ToString("C")</span>
+                                <span>Raised: @item.CurrentAmount.ToString("C")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-12 text-center py-5">
+            <p class="text-muted">No projects currently listed.</p>
+        </div>
+    }
+</div>
