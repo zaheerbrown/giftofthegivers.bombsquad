@@ -1,0 +1,37 @@
+name: Gift of the Givers CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDKs
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - name: Restore website
+        run: dotnet restore giftofthegivers.csproj
+
+      - name: Build website
+        run: dotnet build giftofthegivers.csproj --configuration Release --no-restore
+
+      - name: Restore Azure Functions
+        run: dotnet restore GiftOfTheGivers.Functions/GiftOfTheGivers.Functions.csproj
+
+      - name: Build Azure Functions
+        run: dotnet build GiftOfTheGivers.Functions/GiftOfTheGivers.Functions.csproj --configuration Release --no-restore
